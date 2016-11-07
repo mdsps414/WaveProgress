@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WaveProgressView">
+        <attr name="wpv_type" format="enum">
+            <enum name="rectangle" value="1" />
+            <enum name="oval" value="2" />
+            <enum name="square" value="3" />
+            <enum name="circle" value="4" />
+        </attr>
+        <attr name="wpv_top_left_corner_radius" format="dimension" />
+        <attr name="wpv_top_right_corner_radius" format="dimension" />
+        <attr name="wpv_bottom_left_corner_radius" format="dimension" />
+        <attr name="wpv_bottom_right_corner_radius" format="dimension" />
+        <attr name="wpv_corner_radius" format="dimension" />
+        <attr name="wpv_wave_color" format="color" />
+        <attr name="wpv_background_color" format="color" />
+        <attr name="wpv_border_width" format="dimension" />
+        <attr name="wpv_border_color" format="color" />
+        <attr name="wpv_progress" format="float" />
+        <attr name="wpv_wave_length" format="enum">
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="small" value="3" />
+        </attr>
+        <attr name="wpv_wave_height" format="enum">
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="small" value="3" />
+        </attr>
+    </declare-styleable>
+</resources>

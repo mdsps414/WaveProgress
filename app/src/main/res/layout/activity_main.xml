@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.mdsps.views.waveprogressview.test.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/wave.progress.box"
+        android:layout_width="150dp"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true">
+
+        <ru.mdsps.views.waveprogressview.WaveProgressView
+            android:id="@+id/wave.progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:wpv_type="rectangle"
+            app:wpv_border_width="4dp"
+            app:wpv_border_color="@color/colorPrimary"
+            app:wpv_top_left_corner_radius="30dp"
+            app:wpv_bottom_right_corner_radius="30dp"
+            app:wpv_wave_color="@color/colorAccent"
+            app:wpv_wave_height="large"
+            app:wpv_wave_length="large"
+            app:wpv_progress="85"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/wave.progress.box"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/type.rectangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Rectangle"/>
+
+            <RadioButton
+                android:id="@+id/type.oval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Oval"/>
+
+            <RadioButton
+                android:id="@+id/type.square"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Square"/>
+
+            <RadioButton
+                android:id="@+id/type.circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Circle"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/seek.bar.box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="left top corner radius"
+                    android:layout_weight="1"/>
+
+                <SeekBar
+                    android:id="@+id/seek.bar.lt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="60" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="right top corner radius"
+                    android:layout_weight="1"/>
+
+                <SeekBar
+                    android:id="@+id/seek.bar.rt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="60"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="left bottom corner radius"
+                    android:layout_weight="1"/>
+
+                <SeekBar
+                    android:id="@+id/seek.bar.lb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="60"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="right bottom corner radius"
+                    android:layout_weight="1"/>
+
+                <SeekBar
+                    android:id="@+id/seek.bar.rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="60"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
