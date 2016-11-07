@@ -54,28 +54,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="Rectangle"/>
+                android:text="@string/option_rectangle"/>
 
             <RadioButton
                 android:id="@+id/type.oval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Oval"/>
+                android:text="@string/option_oval"/>
 
             <RadioButton
                 android:id="@+id/type.square"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Square"/>
+                android:text="@string/option_square"/>
 
             <RadioButton
                 android:id="@+id/type.circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Circle"/>
+                android:text="@string/option_circle"/>
 
         </RadioGroup>
 
@@ -96,7 +96,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="left top corner radius"
+                    android:text="@string/lt_corner_radius"
                     android:layout_weight="1"/>
 
                 <SeekBar
@@ -119,7 +119,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="right top corner radius"
+                    android:text="@string/rt_corner_radius"
                     android:layout_weight="1"/>
 
                 <SeekBar
@@ -142,7 +142,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="left bottom corner radius"
+                    android:text="@string/lb_corner_radius"
                     android:layout_weight="1"/>
 
                 <SeekBar
@@ -165,7 +165,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="right bottom corner radius"
+                    android:text="@string/rb_corner_radius"
                     android:layout_weight="1"/>
 
                 <SeekBar
