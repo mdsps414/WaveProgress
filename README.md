@@ -13,9 +13,9 @@
 </br></br>
 
 <p align="center">
-	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/rectangle.png">
-	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/oval.png">
-	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/square.png">
-	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/circle.png">
+	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/images/rectangle.png">
+	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/images/oval.png">
+	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/images/square.png">
+	<img  with="240"  height="427" src="https://github.com/mdsps414/WaveProgress/blob/master/images/circle.png">
 </p>
 
