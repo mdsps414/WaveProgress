@@ -38,14 +38,9 @@ public class MainActivity extends AppCompatActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.types);
         mSeekBarBox = (LinearLayout) findViewById(R.id.seek_bar_box);
         mLtSeekBar = (SeekBar) findViewById(R.id.seek_bar_lt);
-        mLtSeekBar.setMax(60);
         mRtSeekBar = (SeekBar) findViewById(R.id.seek_bar_rt);
-        mRtSeekBar.setMax(60);
         mLbSeekBar = (SeekBar) findViewById(R.id.seek_bar_lb);
-        mLbSeekBar.setMax(60);
         mRbSeekBar = (SeekBar) findViewById(R.id.seek_bar_rb);
-        mRbSeekBar.setMax(60);
-
     }
 
     RadioGroup.OnCheckedChangeListener mRadioCheck = new RadioGroup.OnCheckedChangeListener() {
