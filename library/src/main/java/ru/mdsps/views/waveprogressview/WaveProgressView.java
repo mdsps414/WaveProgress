@@ -48,8 +48,6 @@ public class WaveProgressView extends View {
     private float borderWidth = 0f;
     private float progress = 50f;
     private float mRealProgress = 100 - progress;
-    private float mWaveLength;
-    private float mWaveHz = 0.13f;
 
     private int mWaveMultipleMode;
     private int mWaveHeightMode;
@@ -70,8 +68,6 @@ public class WaveProgressView extends View {
     private Paint mThirdWavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint mBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    private Rect mRect = new Rect();
-    private Rect mBorderRect = new Rect();
     private RectF mBounds = new RectF();
     private RectF mBorderBounds = new RectF();
 
@@ -152,11 +148,11 @@ public class WaveProgressView extends View {
         invalidate();
     }
 
-    public int getFirstWaveColor() {
+    public int getWaveColor() {
         return firstWaveColor;
     }
 
-    public void setFirstWaveColor(int firstWaveColor) {
+    public void setWaveColor(int firstWaveColor) {
         this.firstWaveColor = firstWaveColor;
         invalidate();
     }
@@ -340,6 +336,7 @@ public class WaveProgressView extends View {
     }
 
     private void getWaveOffset() {
+        float mWaveHz = 0.13f;
         if (mFirstWaveOffset > Float.MAX_VALUE - 100) {
             mFirstWaveOffset = 0;
         } else {
@@ -374,7 +371,7 @@ public class WaveProgressView extends View {
         float x = 0;
         float mMaxRight = getRight() + X_SPACE;
 
-        mWaveLength = width * getWaveMultiple();
+        float mWaveLength = width * getWaveMultiple();
         double omega = PI2 / mWaveLength;
 
         getWaveOffset();
