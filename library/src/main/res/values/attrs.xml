@@ -13,7 +13,6 @@
         <attr name="wpv_bottom_right_corner_radius" format="dimension" />
         <attr name="wpv_corner_radius" format="dimension" />
         <attr name="wpv_wave_color" format="color" />
-        <attr name="wpv_background_color" format="color" />
         <attr name="wpv_border_width" format="dimension" />
         <attr name="wpv_border_color" format="color" />
         <attr name="wpv_progress" format="float" />

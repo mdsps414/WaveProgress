@@ -494,6 +494,7 @@ public class WaveProgressView extends View {
             }
             canvas.drawPath(mBorder, mWavePaint);
         }
+
         // Wave
         mBorder.reset();
         Bitmap wave = generateWaveBitmap();
