@@ -8,9 +8,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -53,9 +55,10 @@ public class WaveProgressView extends View {
     private int mWaveHeightMode;
 
     private int viewType = 0;
-    private int backgroundColor = Color.TRANSPARENT;
     private int firstWaveColor = Color.BLUE;
     private int borderColor = Color.BLACK;
+
+    private Drawable backgroundDrawable;
 
     private Path mFirstWave = new Path();
     private Path mSecondWave = new Path();
@@ -102,16 +105,6 @@ public class WaveProgressView extends View {
         invalidate();
     }
 
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    @Override
-    public void setBackgroundColor(int backgroundColor) {
-        this.backgroundColor = backgroundColor;
-        invalidate();
-    }
-
     public int getBorderColor() {
         return borderColor;
     }
@@ -122,11 +115,11 @@ public class WaveProgressView extends View {
     }
 
     public float getBorderWidth() {
-        return borderWidth;
+        return px2dp(borderWidth);
     }
 
     public void setBorderWidth(float borderWidth) {
-        this.borderWidth = borderWidth;
+        this.borderWidth = dp2px(borderWidth);
         invalidate();
     }
 
@@ -148,11 +141,11 @@ public class WaveProgressView extends View {
         invalidate();
     }
 
-    public int getWaveColor() {
+    public int getFirstWaveColor() {
         return firstWaveColor;
     }
 
-    public void setWaveColor(int firstWaveColor) {
+    public void setFirstWaveColor(int firstWaveColor) {
         this.firstWaveColor = firstWaveColor;
         invalidate();
     }
@@ -181,6 +174,7 @@ public class WaveProgressView extends View {
 
     public void setProgress(float progress) {
         this.progress = progress;
+        mRealProgress = 100 - progress;
         invalidate();
     }
 
@@ -229,7 +223,6 @@ public class WaveProgressView extends View {
             allCornerRadius = a.getDimensionPixelSize(
                     R.styleable.WaveProgressView_wpv_corner_radius, 0);
             firstWaveColor = a.getColor(R.styleable.WaveProgressView_wpv_wave_color, Color.BLUE);
-            backgroundColor = a.getColor(R.styleable.WaveProgressView_wpv_background_color, Color.TRANSPARENT);
             borderColor = a.getColor(R.styleable.WaveProgressView_wpv_border_color, Color.BLACK);
             borderWidth = a.getDimensionPixelSize(
                     R.styleable.WaveProgressView_wpv_border_width, 0);
@@ -238,6 +231,9 @@ public class WaveProgressView extends View {
             mWaveHeightMode = a.getInt(R.styleable.WaveProgressView_wpv_wave_height, 1);
 
             a.recycle();
+
+            backgroundDrawable = getBackground();
+            setBackgroundResource(0);
         }
 
         if(allCornerRadius > 0){
@@ -450,11 +446,54 @@ public class WaveProgressView extends View {
         return  dp * scale + 0.5f;
     }
 
+    private Bitmap getBitmapFromDrawable(Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
+
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+
+        try {
+            Bitmap bitmap;
+
+            if (drawable instanceof ColorDrawable) {
+                bitmap = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888);
+            } else {
+                bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            }
+
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+            return bitmap;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
         calculatePath();
 
+        // Background
+        if(backgroundDrawable != null) {
+            mBorder.reset();
+            Bitmap background = getBitmapFromDrawable(backgroundDrawable);
+            BitmapShader mBackShader = new BitmapShader(background, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            mWavePaint.setStyle(Paint.Style.FILL);
+            mWavePaint.setShader(mBackShader);
+            if (viewType == VIEW_TYPE_RECTANGLE || viewType == VIEW_TYPE_SQUARE) {
+                mBorder.addRoundRect(mBorderBounds, mRadii, Path.Direction.CW);
+            } else {
+                mBorder.addOval(mBorderBounds, Path.Direction.CW);
+            }
+            canvas.drawPath(mBorder, mWavePaint);
+        }
         // Wave
         mBorder.reset();
         Bitmap wave = generateWaveBitmap();

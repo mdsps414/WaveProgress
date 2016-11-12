@@ -12,171 +12,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.mdsps.views.waveprogressview.test.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/wave.progress.box"
+    <ru.mdsps.views.waveprogressview.WaveProgressView
+        android:id="@+id/wave.progress1"
         android:layout_width="150dp"
-        android:layout_height="220dp"
-        android:layout_centerHorizontal="true">
+        android:layout_height="200dp"
+        android:background="@color/colorPrimaryDark"
+        app:wpv_type="rectangle"
+        app:wpv_border_width="4dp"
+        app:wpv_border_color="@color/colorPrimary"
+        app:wpv_top_left_corner_radius="30dp"
+        app:wpv_bottom_right_corner_radius="30dp"
+        app:wpv_wave_color="@color/colorAccent"
+        app:wpv_wave_height="large"
+        app:wpv_wave_length="large"
+        app:wpv_progress="65"/>
 
-        <ru.mdsps.views.waveprogressview.WaveProgressView
-            android:id="@+id/wave.progress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            app:wpv_type="rectangle"
-            app:wpv_border_width="4dp"
-            app:wpv_border_color="@color/colorPrimary"
-            app:wpv_top_left_corner_radius="30dp"
-            app:wpv_bottom_right_corner_radius="30dp"
-            app:wpv_wave_color="@color/colorAccent"
-            app:wpv_wave_height="large"
-            app:wpv_wave_length="large"
-            app:wpv_progress="85"/>
+    <ru.mdsps.views.waveprogressview.WaveProgressView
+        android:id="@+id/wave.progress2"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/wave.progress1"
+        android:background="@mipmap/image"
+        app:wpv_type="oval"
+        app:wpv_border_width="4dp"
+        app:wpv_border_color="@color/colorPrimary"
+        app:wpv_top_left_corner_radius="30dp"
+        app:wpv_bottom_right_corner_radius="30dp"
+        app:wpv_wave_color="@color/colorProgress2"
+        app:wpv_wave_height="large"
+        app:wpv_wave_length="large"
+        app:wpv_progress="55"/>
 
-    </FrameLayout>
+    <ru.mdsps.views.waveprogressview.WaveProgressView
+        android:id="@+id/wave.progress3"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/wave.progress1"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:wpv_type="circle"
+        app:wpv_border_width="4dp"
+        app:wpv_border_color="@color/colorPrimary"
+        app:wpv_top_left_corner_radius="30dp"
+        app:wpv_bottom_right_corner_radius="30dp"
+        app:wpv_wave_color="@color/colorProgress3"
+        app:wpv_wave_height="large"
+        app:wpv_wave_length="large"
+        app:wpv_progress="55"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/wave.progress.box"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
+    <ru.mdsps.views.waveprogressview.WaveProgressView
+        android:id="@+id/wave.progress4"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/wave.progress2"
+        android:layout_toRightOf="@+id/wave.progress3"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        app:wpv_type="square"
+        app:wpv_border_width="4dp"
+        app:wpv_border_color="@color/colorPrimary"
+        app:wpv_top_right_corner_radius="30dp"
+        app:wpv_bottom_left_corner_radius="30dp"
+        app:wpv_wave_color="@color/colorProgress4"
+        app:wpv_wave_height="large"
+        app:wpv_wave_length="large"
+        app:wpv_progress="35"/>
 
-        <RadioGroup
-            android:id="@+id/types"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/type.rectangle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="@string/option_rectangle"/>
-
-            <RadioButton
-                android:id="@+id/type.oval"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/option_oval"/>
-
-            <RadioButton
-                android:id="@+id/type.square"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/option_square"/>
-
-            <RadioButton
-                android:id="@+id/type.circle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/option_circle"/>
-
-        </RadioGroup>
-
-        <LinearLayout
-            android:id="@+id/seek.bar.box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/lt_corner_radius"
-                    android:layout_weight="1"/>
-
-                <SeekBar
-                    android:id="@+id/seek.bar.lt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:max="100" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/rt_corner_radius"
-                    android:layout_weight="1"/>
-
-                <SeekBar
-                    android:id="@+id/seek.bar.rt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/lb_corner_radius"
-                    android:layout_weight="1"/>
-
-                <SeekBar
-                    android:id="@+id/seek.bar.lb"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/rb_corner_radius"
-                    android:layout_weight="1"/>
-
-                <SeekBar
-                    android:id="@+id/seek.bar.rb"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
 </RelativeLayout>
